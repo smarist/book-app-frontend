@@ -9,10 +9,10 @@ import styles from "./ManageBooks.module.scss";
 import { ManageBooksProps } from "./types";
 
 const ManageBooks: FC<ManageBooksProps> = ({
-  myTeam = [],
-  task = []
+  edit,
+  onClose,
 }) => {
-  const { state, dispatch, handleAddBook, onSelectImage, bookId } = useManageBooks();
+  const { state, dispatch, handleAddBook, onSelectImage, bookId } = useManageBooks(edit);
   return (
     <div className={styles.manageBooks}>
       <h2 className={styles.manageBookTitle}>

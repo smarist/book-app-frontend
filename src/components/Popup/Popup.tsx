@@ -1,7 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import styles from "./Popup.module.scss";
+import { PopupProps } from "./types";
 
-const AddModal = ({
+const AddModal: FC<PopupProps> = ({
   ispopupOpen,
   popupComponent,
   showPopup,
