@@ -1,5 +1,7 @@
-
 export interface BooksProps {
-     edit?: Boolean,
-     books: [],
+  id: number;
+  title: string;
+  cover: string;
+  desc: string;
+  price: number | null;
 }

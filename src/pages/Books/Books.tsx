@@ -7,10 +7,7 @@ import usePopRoutes from "../../utils/hooks/usePopRoutes";
 import Popup from "../../components/Popup";
 import { BooksProps } from "./types";
 
-const Books: FC<BooksProps> = ({
-  // books = [],
-  task = []
-}) => {
+const Books: FC<BooksProps> = () => {
   const { books, handleDelete } = useBooks();
   usePopRoutes();
 
@@ -21,7 +18,7 @@ const Books: FC<BooksProps> = ({
         <h1>Uc Book Shop</h1>
         <div className={styles["add-btn"]}>
           <Link to="/add-book" className={styles["link"]}>
-            {/* <Button name="book" bgColor="red-bg" /> */}
+            <Button name="book" bgColor="red-bg" createFnc={() => {}}/>
           </Link>
         </div>
         <div className={styles["books"]}>

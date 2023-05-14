@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { useEffect, useReducer } from 'react'
+import { Reducer, useEffect, useReducer } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
 import { getBase64 } from '../../../utils/helpers';
+import { ReducerState } from "../types";
 
-function useManageBooks(edit) {
+function useManageBooks(edit?: Boolean) {
+  type CustomFile = File & { base64?: string };
     
     const initState = {
         title: "",
@@ -16,25 +18,27 @@ function useManageBooks(edit) {
       const { bookId } = useParams();
       const navigate = useNavigate();
     
-      const [state, dispatch] = useReducer(
+      const [state, dispatch] = useReducer<Reducer<ReducerState, any>>(
         (bookState, value) => ({ ...bookState, ...value }),
         initState
       );
       
-      const onSelectImage = (e) => {
-        let file = e.target.files[0];
+      const onSelectImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let file = e.target.files?.[0] as CustomFile;
     
-        getBase64(file)
-          .then((result) => {
-            file["base64"] = result;
-            dispatch({
-              image: result,
-              image_src: URL.createObjectURL(e.target.files[0]),
+        if (file) {
+          getBase64(file)
+            .then((result) => {
+              file.base64 = result as string; // Type assertion for result
+              dispatch({
+                image: result as string, // Type assertion for result
+                image_src: URL.createObjectURL(file),
+              });
+            })
+            .catch((err) => {
+              console.log(err);
             });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        }
       };
 
     useEffect(() => {
@@ -55,7 +59,7 @@ function useManageBooks(edit) {
         fetchABook()
     }, [bookId, edit])
 
-      const handleAddBook = async(e) =>{
+      const handleAddBook = async(e: React.FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
         //dispatch({ isLoading: true })
         if(!edit) {

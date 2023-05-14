@@ -1,10 +1,7 @@
-import { ChangeEvent } from "react"
-
 export type ButtonProps = {
   label?: string,
-  // onSelectImage: (event: ChangeEvent<HTMLInputElement>) => void;
   name?: string,
-  createFnc: () => {},
+  createFnc: (e: React.FormEvent<HTMLFormElement>) => void;
   bgColor: string,
   edit?: any,
   disabled?: boolean,

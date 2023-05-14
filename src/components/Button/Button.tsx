@@ -15,7 +15,7 @@ const Button: FC<ButtonProps> = ({
   return (
     <button
       className={`${styles.addBtn} ${styles[bgColor]}`}
-      onClick={createFnc}
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => createFnc(e as any)}
       disabled={disabled}
     >
       {isLoading ? (

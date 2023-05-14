@@ -6,4 +6,5 @@ export type ImageUploaderProps = {
   name?: string,
   imgName?: string,
   imgSrc?: string,
+  value?: string,
 }

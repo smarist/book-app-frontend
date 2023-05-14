@@ -1,12 +1,10 @@
-import { ChangeEvent } from "react"
+import { ChangeEvent, ChangeEventHandler } from "react"
 
 export type TextAreaProps = {
   label?: string,
-  onChange?: () => void;
+  onChange: ChangeEventHandler<HTMLTextAreaElement>;
   name?: string,
-  imgName?: string,
-  imgSrc?: string,
   value?: string,
-  type: string,
+  type?: string,
   onBlur?: (event: ChangeEvent<HTMLInputElement>) => void,
 }

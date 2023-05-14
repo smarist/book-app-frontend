@@ -22,7 +22,7 @@ const Number: FC<NumberProps> = ({
       <div className={styles["form-container"]}>
         <input
           type="number"
-          defaultValue={value}
+          defaultValue={value !== null ? value : undefined}
           // value={props.value}
           name={name}
           placeholder={integer ? "0" : "0.00"}

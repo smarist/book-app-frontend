@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
+import { BooksProps } from '../types';
 
 function useBooks() {
 
-    const [books, setBooks] = useState([]);
+    const [books, setBooks] = useState<BooksProps[]>([]);
 
     const fetchAllBooks = async() => {
         try{
@@ -18,7 +19,7 @@ function useBooks() {
         fetchAllBooks()
     }, [])
 
-    const handleDelete = async(id) =>{
+    const handleDelete = async(id: number) =>{
         //dispatch({ isLoading: true })
             try{
                 await axios.delete("http://localhost:8800/books/"+id).then(() => {
