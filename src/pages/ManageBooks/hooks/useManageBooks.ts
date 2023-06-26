@@ -70,7 +70,6 @@ function useManageBooks(edit?: Boolean) {
                     cover: state.image,
                     price: state.price,
                 }).then(() => {
-                    console.log("Product was succesfully created");
                     navigate("/")
                 })
             }catch(err) {
@@ -84,7 +83,6 @@ function useManageBooks(edit?: Boolean) {
                     cover: state.image,
                     price: state.price,
                 }).then(() => {
-                    console.log("Book was updated");
                     navigate("/")
                 })
             }catch(err) {

@@ -8,7 +8,7 @@ function useBooks() {
 
     const fetchAllBooks = async() => {
         try{
-            const res = await axios.get("http://localhost:8800/books")
+            const res = await axios.get("http://localhost:8800/api/books")
             setBooks(res.data)
         }catch(err) {
             console.log(err)

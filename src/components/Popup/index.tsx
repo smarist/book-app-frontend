@@ -1,16 +1,27 @@
 import { connect } from 'react-redux';
-import { showPopup } from '../../redux/actions/popUp.action'
-import { DispatchType, RootState } from '../../redux/types';
+import { showPopup } from '../../redux/actions/popUp.action';
 import Popup from './Popup';
+import { Dispatch } from 'redux';
+import { RootState } from '../../redux/types';
 
-const mapState = ({popup}: RootState) => ({
+interface StateProps {
+  ispopupOpen: boolean;
+  popupComponent: any; 
+  onClose: () => void;
+}
+
+interface DispatchProps {
+  showPopup: (data: boolean) => void;
+}
+
+const mapStateToProps = ({ popup }: RootState): StateProps => ({
   ispopupOpen: popup.ispopupOpen,
   popupComponent: popup.popupComponent,
   onClose: popup.onClose,
-})
+});
 
-const mapDispatch = (dispatch: DispatchType) => ({
-  showPopup: (data: boolean) => dispatch(showPopup(data))
-})
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+  showPopup: (data: boolean) => dispatch(showPopup(data)),
+});
 
-export default connect(mapState, mapDispatch)(Popup)
+export default connect(mapStateToProps, mapDispatchToProps)(Popup);

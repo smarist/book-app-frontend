@@ -1,11 +1,15 @@
 .manageBooks {
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 20px 30px;
+}
+
+.manageBookTitle {
+    margin-top: -20px;
 }
 
 .main {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
 }
